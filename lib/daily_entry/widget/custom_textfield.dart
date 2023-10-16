@@ -33,6 +33,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         Container(
           width: 70.w,
           child: TextField(
+            minLines: 1,
+            maxLines: 200,
             enabled: widget.enabled,
             controller: widget.controller,
             onChanged: (value) {

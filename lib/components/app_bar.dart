@@ -5,7 +5,7 @@ import 'package:glad/main.dart';
 class GladAppBar extends StatefulWidget{
    final String titleOfPage;
    final String? previousPage;
-   const GladAppBar({super.key, required this.titleOfPage, this.previousPage = "Glad"});
+   const GladAppBar({super.key, required this.titleOfPage, this.previousPage = "glad"});
 
   @override
   State<GladAppBar> createState() => _GladAppBarState();

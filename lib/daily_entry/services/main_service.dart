@@ -92,7 +92,7 @@ class RecordService {
 
     var queryResult = await db.rawQuery("""
     SELECT * FROM daily_record
-    WHERE grateful  LIKE '$keyword%'
+    WHERE grateful  LIKE '%$keyword%'
     ORDER BY date DESC
     """);
 

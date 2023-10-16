@@ -42,7 +42,7 @@ class Splash extends StatelessWidget{
                         fontSize: 120,
                      )),
                      const SizedBox(height: 20,),
-                      Text("Focussing on positive", style:  GoogleFonts.caveat(
+                      Text("Focusing on positive", style:  GoogleFonts.caveat(
                        fontSize: 30,
                      )),
                       Text("daily experiences", style:  GoogleFonts.caveat(

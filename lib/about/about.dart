@@ -41,7 +41,7 @@ class AboutPage extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'What Glad means?',
+                      'What glad means?',
                       style: GoogleFonts.actor(
 
                         fontWeight: FontWeight.w700,

@@ -165,7 +165,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           onPressed: () {
 
-                            DatePicker.showTimePicker(context,
+
+                            DatePicker.showTime12hPicker(context,
 
                                 showTitleActions: true,
                                 // minTime: DateTime.now(),
@@ -182,12 +183,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                      }
                                    });
                                    NotificationService().scheduleNotification(
-                                        title: 'Glad',
+                                        title: 'glad',
                                         body: 'Time to add your record in Glad',
                                         scheduledNotificationDateTime: scheduleTime
                                    );
                                 },
+
                                 currentTime: DateTime.now(),
+
                                 locale: LocaleType.en);
                           },
                           child: const Text(

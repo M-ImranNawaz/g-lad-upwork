@@ -115,6 +115,7 @@ class _SearchPageState extends State<SearchPage> {
                           selectedDayPredicate: (day) {
                             return isSameDay(_selectedDate, day);
                           },
+
                           onDaySelected: (selectedDay, focusedDay) {
 
                             setState(() {

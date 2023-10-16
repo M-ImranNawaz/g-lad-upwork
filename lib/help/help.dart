@@ -19,7 +19,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Text:
     const String text =
-        "If you or someone you love is in crises, you can contact the sucide & crises lifeline ";
+        "If you or someone you love is in crisis, you can contact the suicide & crisis lifeline ";
 
     return CupertinoPageScaffold(
       child: NestedScrollView(
@@ -75,7 +75,7 @@ class HelpPage extends StatelessWidget {
                         margin: const EdgeInsets.fromLTRB(0, 0, 1, 9),
                         child:
                         Text(
-                          'Crises Help',
+                          'Crisis Help',
                           style:  GoogleFonts.actor(
                             fontSize:  20,
                             fontWeight:  FontWeight.w700,

@@ -23,20 +23,20 @@ class AboutBloc extends Bloc<AboutEvent, AboutState> {
     _sharedPreferencesService = sharedPreferencesService;
 
     on<OnLoadHelpEvent>((event, emit) async {
-      _service.openPlayer();
-
-      _service.isReadyToPlay().listen((event) async {
-        bool autoPlayMusic = bool.parse(
-            await _sharedPreferencesService.readValue("play_music") ?? "false");
-
-        if (autoPlayMusic) {
-          add(PlayOrPauseMusicEvent());
-        }
-      });
+      // _service.openPlayer();
+      //
+      // _service.isReadyToPlay().listen((event) async {
+      //   bool autoPlayMusic = bool.parse(
+      //       await _sharedPreferencesService.readValue("play_music") ?? "false");
+      //
+      //   if (autoPlayMusic) {
+      //     add(PlayOrPauseMusicEvent());
+      //   }
+      // });
     });
 
     on<PlayOrPauseMusicEvent>((event, emit) async {
-      _service.pauseOrPlayMusic();
+     // _service.pauseOrPlayMusic();
     });
   }
 }

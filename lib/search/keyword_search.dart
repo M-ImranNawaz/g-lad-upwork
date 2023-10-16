@@ -49,7 +49,7 @@ class _KeywordSearchState extends State<KeywordSearch> {
     String grateful = model.grateful;
 
     if(grateful.isNotEmpty){
-      return "I am grateful for $grateful";
+      return "I am grateful $grateful";
     }
 
     String learned = model.learned;
@@ -67,7 +67,7 @@ class _KeywordSearchState extends State<KeywordSearch> {
     String delighted = model.delighted;
 
     if(delighted.isNotEmpty){
-      return "I am delighted for $delighted";
+      return "I am delighted  $delighted";
     }
     return "";
   }
