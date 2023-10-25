@@ -38,7 +38,7 @@ class _KeywordSearchState extends State<KeywordSearch> {
     var inputFormat = DateFormat('yyyy-mm-dd');
     var inputDate = inputFormat.parse(date); // <-- dd/MM 24H format
 
-    var outputFormat = DateFormat('dd/mm/yyyy');
+    var outputFormat = DateFormat('mm/dd/yyyy');
     var outputDate = outputFormat.format(inputDate);
     return outputDate;
   }

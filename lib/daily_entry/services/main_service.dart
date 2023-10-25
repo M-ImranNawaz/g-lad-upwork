@@ -93,6 +93,9 @@ class RecordService {
     var queryResult = await db.rawQuery("""
     SELECT * FROM daily_record
     WHERE grateful  LIKE '%$keyword%'
+    OR learned LIKE '%$keyword%'
+    OR appreciated LIKE '%$keyword%'
+    OR delighted LIKE '%$keyword%'
     ORDER BY date DESC
     """);
 

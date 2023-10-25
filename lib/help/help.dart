@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -9,6 +10,7 @@ import 'package:glad/music_service/music_service.dart';
 import 'package:glad/preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../app_router.dart';
 
@@ -18,8 +20,8 @@ class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Text:
-    const String text =
-        "If you or someone you love is in crisis, you can contact the suicide & crisis lifeline ";
+    const String helpText =
+        "If you or someone you love is in crisis, you can contact the ";
 
     return CupertinoPageScaffold(
       child: NestedScrollView(
@@ -83,12 +85,29 @@ class HelpPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Flexible(
-                        child: Text(
-                          text, // Declared above
-                          style: TextStyle(fontSize: 18),
-                          textAlign: TextAlign.center,
-                        ),
+                      // const Flexible(
+                      //   child: Text(
+                      //     helpText, // Declared above
+                      //     style: TextStyle(fontSize: 18),
+                      //     textAlign: TextAlign.center,
+                      //   ),
+                      // ),
+                       RichText(
+                        text:  TextSpan(
+                           children: [
+                            const TextSpan(
+                              text: helpText,
+                              style: TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                             TextSpan(
+                               text: "Suicide & Crisis lifeline",
+                               style: const TextStyle(color: Colors.blue, fontSize: 18, decoration: TextDecoration.underline,),
+                               recognizer: TapGestureRecognizer()
+                                 ..onTap = () { launchUrl(Uri(scheme: "https", path: "www.988lifeline.org"));
+                                 },
+                             ),
+                           ]
+                        ) ,
                       ),
                       const SizedBox(
                         height: 30,

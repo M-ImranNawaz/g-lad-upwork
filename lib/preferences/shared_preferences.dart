@@ -9,10 +9,15 @@ class SharedPreferencesService {
   }
 
   saveValue(String key,String value) async {
+    print("**********");
+    print(key);
+    print(value);
     await _storage.write(key: key, value: value);
   }
 
   Future<String?> readValue(String key) async {
+    print("**********");
+    print(key);
      return await _storage.read(key: key);
   }
 

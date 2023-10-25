@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:glad/app_router.dart';
 import 'package:glad/components/app_bar.dart';
 import 'package:glad/main.dart';
@@ -34,6 +35,10 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+
+  late final FlutterSecureStorage _storage;
+
+  //late SharedPreferencesService _sharedPreferencesService;
   String scheduledTimeString = "";
   bool isSwitched = false;
   bool showReminderNotificationButton = false;
@@ -54,9 +59,33 @@ class _SettingsPageState extends State<SettingsPage> {
 
     super.initState();
 
+
     WidgetsBinding.instance.addPostFrameCallback((_){
         myColor = Theme.of(context).colorScheme.primary;
+        _storage =  const FlutterSecureStorage();
+        setEnableReminderSetting();
     });
+  }
+
+  void setEnableReminderSetting() async {
+      var enableReminderString = await _storage.read(key: "enableReminder");
+
+      var enableReminder = false;
+
+      switch (enableReminderString){
+        case "true":
+              enableReminder = true;
+              break;
+
+        case "false":
+              enableReminder = false;
+              break;
+
+      }
+
+      setState(() {
+         showReminderNotificationButton = enableReminder;
+      });
 
   }
 
@@ -143,7 +172,18 @@ class _SettingsPageState extends State<SettingsPage> {
                                if(!showReminderNotificationButton){
                                   await NotificationService().cancelAllNotifications();
                                 }
-                                setState(() {
+
+                               switch (value){
+                                 case true:
+                                   await _storage.write(key: "enableReminder", value:"true");
+                                 case false:
+                                   await _storage.write(key: "enableReminder", value:"false");
+                               }
+
+                               var enableReminderString = await _storage.read(key: "enableReminder");
+
+
+                                setState(()  {
                                    showReminderNotificationButton = value;
                                 });
                           }
@@ -184,7 +224,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                    });
                                    NotificationService().scheduleNotification(
                                         title: 'glad',
-                                        body: 'Time to add your record in Glad',
+                                        body: 'Time to add your record in glad',
                                         scheduledNotificationDateTime: scheduleTime
                                    );
                                 },

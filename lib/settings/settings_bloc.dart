@@ -15,9 +15,16 @@ class SavePlayOrPauseMusicEvent extends SettingsEvent{
   SavePlayOrPauseMusicEvent(this.data);
 }
 
+class SaveEnableReminderEvent extends SettingsEvent {
+  late final bool data;
+  SaveEnableReminderEvent(this.data);
+}
+
+
 abstract class SettingsState {}
 class OnLoadSettingState extends SettingsState{}
 class OnLoadPlayMusicState extends SettingsState {}
+class OnEnableRemindersState extends SettingsState {}
 
 
 
@@ -45,6 +52,9 @@ class SettingBloc extends Bloc<SettingsEvent, bool> {
          await _sharedPreferencesService.saveValue("play_music", saveValue);
          emit(event.data);
      });
+
+
+
 
      // emit(event.data);
     // on<SavePlayOrPauseMusicEvent>((event, emit) async{
