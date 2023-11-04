@@ -42,7 +42,9 @@ class _SettingsPageState extends State<SettingsPage> {
   String scheduledTimeString = "";
   bool isSwitched = false;
   bool showReminderNotificationButton = false;
-  DateTime scheduleTime = DateTime.now();
+  DateTime scheduleTime = DateTime.now().add(const Duration(minutes: 1));
+  
+  
   late Color myColor;
 
 
@@ -60,6 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
     super.initState();
 
 
+    
     WidgetsBinding.instance.addPostFrameCallback((_){
         myColor = Theme.of(context).colorScheme.primary;
         _storage =  const FlutterSecureStorage();
@@ -211,7 +214,13 @@ class _SettingsPageState extends State<SettingsPage> {
                                 showTitleActions: true,
                                 // minTime: DateTime.now(),
                                 // maxTime: DateTime(2030, 6, 7),
-                                onChanged: (date) => scheduleTime = date,
+                                onChanged: (date) {
+
+                                  setState(() {
+                                    scheduleTime = date;
+                                  });
+
+                                },
                                 onConfirm: (date) {
 
                                    setState(() {
@@ -221,7 +230,10 @@ class _SettingsPageState extends State<SettingsPage> {
                                      else{
                                        scheduledTimeString = "";
                                      }
+
                                    });
+
+
                                    NotificationService().scheduleNotification(
                                         title: 'glad',
                                         body: 'Time to add your record in glad',
@@ -229,7 +241,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                    );
                                 },
 
-                                currentTime: DateTime.now(),
+                                currentTime: DateTime.now().add(const Duration(minutes: 1)),
 
                                 locale: LocaleType.en);
                           },

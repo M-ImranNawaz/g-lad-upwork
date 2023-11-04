@@ -39,24 +39,37 @@ class NotificationService {
     //     id, title, body, await notificationDetails());
   }
 
+
+  tz.TZDateTime _nextInstanceOfTime(tz.TZDateTime scheduledNotification) {
+    final tz.TZDateTime now = scheduledNotification;
+    tz.TZDateTime scheduledDate =
+    tz.TZDateTime(tz.local, now.year, now.month, now.day, now.hour, now.minute);
+    print("9910 scheduledData is $scheduledDate");
+    return scheduledDate;
+  }
+
   Future scheduleNotification(
       {int id = 0,
         String? title,
         String? body,
         String? payLoad,
         required DateTime scheduledNotificationDateTime}) async {
+
     return notificationsPlugin.zonedSchedule(
         id,
         title,
         body,
-        tz.TZDateTime.from(
-          scheduledNotificationDateTime,
-          tz.local,
+        _nextInstanceOfTime(
+           tz.TZDateTime.from(
+              scheduledNotificationDateTime,
+              tz.local,
+           )
         ),
         await notificationDetails(),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime);
+        UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time);
   }
 
   Future<void> cancelAllNotifications() async {
