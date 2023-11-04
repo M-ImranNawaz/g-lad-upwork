@@ -82,7 +82,7 @@ class RecordService {
 
 
 
-  Future<List<DailyRecordModel>> getKeywordSearchRecord(String keyword) async {
+  Future<SearchResult> getKeywordSearchRecord(String keyword) async {
 
     //get db Path
     var pathDb = await _getPathDB();
@@ -100,14 +100,19 @@ class RecordService {
     """);
 
 
-    print("my query result is ${queryResult.length}");
+
 
     await db.close();
+
+
     if (queryResult.isNotEmpty) {
-      return List.from(queryResult.map((e) => DailyRecordModel.fromJson(e)));
+      return SearchResult(dailyRecordModel: List.from(queryResult.map((e) => DailyRecordModel.fromJson(e))),
+          result: keyword);
+
+      ;
 
     } else {
-      return [];
+      return SearchResult(dailyRecordModel: [], result: keyword);
     }
   }
 

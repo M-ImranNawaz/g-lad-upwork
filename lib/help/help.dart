@@ -22,6 +22,8 @@ class HelpPage extends StatelessWidget {
     // Text:
     const String helpText =
         "If you or someone you love is in crisis, you can contact the ";
+    final isDarkTheme = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
 
     return CupertinoPageScaffold(
       child: NestedScrollView(
@@ -85,19 +87,12 @@ class HelpPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // const Flexible(
-                      //   child: Text(
-                      //     helpText, // Declared above
-                      //     style: TextStyle(fontSize: 18),
-                      //     textAlign: TextAlign.center,
-                      //   ),
-                      // ),
-                       RichText(
+                      RichText(
                         text:  TextSpan(
                            children: [
-                            const TextSpan(
+                            TextSpan(
                               text: helpText,
-                              style: TextStyle(color: Colors.black, fontSize: 18),
+                              style: TextStyle(color: isDarkTheme ? Colors.white : Colors.black, fontSize: 18),
                             ),
                              TextSpan(
                                text: "Suicide & Crisis lifeline",

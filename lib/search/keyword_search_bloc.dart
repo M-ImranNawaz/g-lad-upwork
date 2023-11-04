@@ -17,8 +17,9 @@ class OnKeywordSearchBeginEvent extends KeywordSearchEvent{
 abstract class KeywordSearchState {}
 
 class KeywordResultListState extends KeywordSearchState {
+   String keyword;
    List<DailyRecordModel> list;
-   KeywordResultListState(this.list);
+   KeywordResultListState(this.list, this.keyword);
 }
 
 
@@ -29,7 +30,7 @@ class KeywordSearchBloc extends Bloc<KeywordSearchEvent, KeywordResultListState>
 
   KeywordSearchBloc(
       RecordRepository recordRepository, SharedPreferencesService sharedPreferencesService)
-      : super(KeywordResultListState([])) {
+      : super(KeywordResultListState([],"")) {
 
 
     on<OnLoadSearchEvent>((event, emit) async {});
@@ -38,16 +39,18 @@ class KeywordSearchBloc extends Bloc<KeywordSearchEvent, KeywordResultListState>
 
          var keyword = event.keyword;
          if(keyword.isNotEmpty){
-           List<DailyRecordModel> list = await recordRepository.getKeywordSearchRecord(keyword);
+           SearchResult result = await recordRepository.getKeywordSearchRecord(keyword);
+           List<DailyRecordModel> list = result.dailyRecordModel;
+
            list.sort((a, b) {
              int aDate = DateTime.parse(a.date ?? '').microsecondsSinceEpoch;
              int bDate = DateTime.parse(b.date ?? '').microsecondsSinceEpoch;
              return bDate.compareTo(aDate);
           });
-           emit(KeywordResultListState(list));
+           emit(KeywordResultListState(list,keyword));
          }
          else{
-           emit(KeywordResultListState([]));
+           emit(KeywordResultListState([],keyword));
          }
 
 

@@ -1,3 +1,14 @@
+class SearchResult {
+  List<DailyRecordModel> dailyRecordModel;
+  String result;
+
+  SearchResult({
+    required this.dailyRecordModel,
+    required this.result
+  });
+}
+
+
 class DailyRecordModel {
   int? id;
   String grateful;

@@ -11,6 +11,7 @@ import '../daily_entry/repository/main_repository.dart';
 import '../preferences/shared_preferences.dart';
 import 'keyword_search_bloc.dart';
 import 'dart:math';
+import 'package:string_similarity/string_similarity.dart';
 
 class KeywordSearch extends StatefulWidget {
   const KeywordSearch({super.key});
@@ -44,32 +45,40 @@ class _KeywordSearchState extends State<KeywordSearch> {
   }
 
 
-  String getText(DailyRecordModel model){
-
+  String getClosestString(DailyRecordModel model, String keyword){
     String grateful = model.grateful;
-
-    if(grateful.isNotEmpty){
-      return "I am grateful $grateful";
-    }
-
     String learned = model.learned;
-
-    if(learned.isNotEmpty){
-      return "I learned  $learned";
-    }
-
     String appreciated = model.appreciated;
-
-    if(appreciated.isNotEmpty){
-      return "I appreciate $appreciated";
-    }
-
     String delighted = model.delighted;
 
-    if(delighted.isNotEmpty){
-      return "I am delighted  $delighted";
+    List<String> closestStringArr = [];
+
+    closestStringArr.add(grateful);
+    closestStringArr.add(learned);
+    closestStringArr.add(appreciated);
+    closestStringArr.add(delighted);
+
+
+    final bestMatch = keyword.bestMatch(closestStringArr);
+
+    switch (bestMatch.bestMatchIndex){
+      case 0:
+        return "I am grateful ${closestStringArr[bestMatch.bestMatchIndex]}";
+
+       case 1:
+         return "I learned ${closestStringArr[bestMatch.bestMatchIndex]}";
+      case 2:
+        return "I appreciate ${closestStringArr[bestMatch.bestMatchIndex]}";
+      case 3:
+        return "I am delighted ${closestStringArr[bestMatch.bestMatchIndex]}";
     }
+
     return "";
+  }
+
+  String getText(DailyRecordModel model, String keyword){
+
+    return getClosestString(model, keyword);
   }
 
   @override
@@ -194,7 +203,7 @@ class _KeywordSearchState extends State<KeywordSearch> {
                                                 const SizedBox(width: 30,),
                                                 Flexible(
                                                   child: Text(
-                                                      getText(state.list[index]),
+                                                      getText(state.list[index],state.keyword),
                                                       maxLines: 2,
                                                       overflow: TextOverflow.ellipsis,
                                                       style: GoogleFonts.actor(

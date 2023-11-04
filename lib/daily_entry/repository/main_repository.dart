@@ -12,7 +12,8 @@ class RecordRepository {
     return  await _recordService.getMonthlyRecord(month);
   }
 
-  Future<List<DailyRecordModel>> getKeywordSearchRecord (String keyword) async{
+  Future<SearchResult> getKeywordSearchRecord (String keyword) async{
+    print("keyword is $keyword");
     return  await _recordService.getKeywordSearchRecord(keyword);
   }
 
