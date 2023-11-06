@@ -10,9 +10,15 @@ abstract class SearchEvent {}
 
 class OnLoadSearchEvent extends SearchEvent {}
 
+class OnPageChangedEvent extends SearchEvent {
+  late final DateTime focusedDate;
+  OnPageChangedEvent(this.focusedDate);
+}
+
 abstract class SearchState {}
 
 class OnLoadSearchState extends SearchState {}
+
 
 
 class GetEventsForDateState extends SearchState {
@@ -32,28 +38,45 @@ class SearchBloc extends Bloc<SearchEvent, GetEventsForDateState> {
       : super(GetEventsForDateState(LinkedHashMap())) {
 
 
+
+    on<OnPageChangedEvent>((event, emit) async {
+
+          var date = event.focusedDate;
+          var eventList = await loadEvents(date, recordRepository);
+          emit(GetEventsForDateState(eventList));
+
+    });
+
     on<OnLoadSearchEvent>((event, emit) async {
 
 
-      var recordList = await recordRepository.getMonthlyRecord(DateTime.now().month);
-
-
-      var eventsMap = {
-        for (var item in recordList)
-          DateTime.parse("${DateTime.parse(item.date)}Z") :
-          [Event(id: item.id, date: item.date)]
-      };
-
-
-      events = LinkedHashMap<DateTime, List<Event>>(
-      )..addAll(eventsMap );
-
-      emit(GetEventsForDateState(events));
+           var eventList = await loadEvents(DateTime.now(), recordRepository);
+           emit(GetEventsForDateState(eventList));
 
     });
 
 
   }
 
-  }
+
+  Future<LinkedHashMap<DateTime, List<Event>>> loadEvents(DateTime dateTime, RecordRepository recordRepository) async{
+     var recordList = await recordRepository.getMonthlyRecord(dateTime.month);
+
+
+     var eventsMap = {
+       for (var item in recordList)
+         DateTime.parse("${DateTime.parse(item.date)}Z") :
+         [Event(id: item.id, date: item.date)]
+     };
+
+
+     events = LinkedHashMap<DateTime, List<Event>>(
+     )..addAll(eventsMap );
+
+     return events;
+
+   }
+
+
+ }
 

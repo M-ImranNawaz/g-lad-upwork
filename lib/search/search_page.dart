@@ -68,8 +68,7 @@ class _SearchPageState extends State<SearchPage> {
                     ..add(OnLoadSearchEvent())),
             ],
             child: BlocBuilder<SearchBloc, GetEventsForDateState>
-              (builder: (context, state)
-            {
+              (builder: (context, state) {
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -80,9 +79,16 @@ class _SearchPageState extends State<SearchPage> {
                         height: 30,
                       ),
                       TableCalendar<Event>(
+                          onPageChanged: (focusedDay) {
+                            _focusedDate = focusedDay;
+                            BlocProvider.of<SearchBloc>(context)
+                                .add(OnPageChangedEvent(focusedDay));
+                          },
+
+
                           calendarBuilders: CalendarBuilders(
                             markerBuilder: (BuildContext context, date, events) {
-                              if (events.isEmpty) return SizedBox();
+                              if (events.isEmpty) return const SizedBox();
                               return ListView.builder(
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
@@ -111,7 +117,7 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                           firstDay: DateTime.utc(2010, 10, 16),
                           lastDay: DateTime.utc(2030, 3, 14),
-                          focusedDay: DateTime.now(),
+                          focusedDay: _focusedDate,
                           selectedDayPredicate: (day) {
                             return isSameDay(_selectedDate, day);
                           },
@@ -123,7 +129,11 @@ class _SearchPageState extends State<SearchPage> {
                               _focusedDate = focusedDay;
                             });
 
-                            context.push('/${Routes.dailyEntry}', extra: state.data[selectedDay]?[0].date);
+                            var date = state.data[selectedDay]?[0].date;
+                            if(date != null){
+                              context.push('/${Routes.dailyEntry}', extra: state.data[selectedDay]?[0].date);
+                            }
+
 
                           },
 
