@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_text_styled/flutter_text_styled.dart';
 import 'package:glad/about/about_bloc.dart';
 import 'package:glad/about/constants.dart';
 import 'package:glad/components/app_bar.dart';
@@ -11,11 +12,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../app_router.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
 
   @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+
+
+
+  @override
   Widget build(BuildContext context) {
+    final isDarkTheme = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return CupertinoPageScaffold(
       child:
       NestedScrollView(
@@ -52,7 +62,14 @@ class AboutPage extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(text1), // Text 1,2,3 are above
+                    TextStyled(
+                        textStyle: GoogleFonts.actor(
+                          color: isDarkTheme ? Colors.white : Colors.black,
+
+                          fontSize: 16,
+                          height: 1.26,
+                        )
+                    ).getRichText(text1), // Text 1,2,3 are above
                     const SizedBox(
                       height: 20,
                     ),
@@ -68,7 +85,13 @@ class AboutPage extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(text2),
+                    TextStyled(
+                        textStyle: GoogleFonts.actor(
+                          color: isDarkTheme ? Colors.white : Colors.black,
+                          fontSize: 16,
+                          height: 1.26,
+                        )
+                    ).getRichText(text2),
                     const SizedBox(
                       height: 20,
                     ),
@@ -84,7 +107,15 @@ class AboutPage extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(text3),
+                    TextStyled(
+                        textStyle: GoogleFonts.actor(
+                          color: isDarkTheme ? Colors.white : Colors.black,
+
+                          fontSize: 16,
+                          height: 1.26,
+                        )
+                    ).getRichText(text3)
+
                   ],
                 ),
               ),

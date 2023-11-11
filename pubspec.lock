@@ -251,6 +251,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_text_styled:
+    dependency: "direct main"
+    description:
+      name: flutter_text_styled
+      sha256: "9b6e7652dafc11f5b81ba105e42f19becc4df91c75a8d237c02142e9b709b933"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
