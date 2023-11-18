@@ -85,7 +85,7 @@ class _RecordEntryDailyPage extends State<RecordEntryDailyPage> {
               },
               child: Container(
                 width: 100.w,
-                height: 95.h,
+
 
                 padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
                 child: Column(
