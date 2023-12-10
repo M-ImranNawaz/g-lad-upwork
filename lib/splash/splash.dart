@@ -17,7 +17,7 @@ class Splash extends StatelessWidget{
 
          if(state is NavigateToHomeScreenState){
            WidgetsBinding.instance.addPostFrameCallback(
-                 (_) => context.go('/home'),
+                 (_) => context.go('/login'),
            );
          }
 

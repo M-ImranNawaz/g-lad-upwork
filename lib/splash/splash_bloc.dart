@@ -12,7 +12,7 @@ class NavigateToHomeScreenState extends SplashState{}
 class SplashBloc extends Bloc<SplashEvent, SplashState>{
 
   SplashBloc() : super(OnLoadSplashScreenState()){
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
          add(NavigateToHomeScreenEvent());
     });
 

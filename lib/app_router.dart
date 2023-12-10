@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:glad/daily_entry/daily_entry_home.dart';
-import 'package:glad/help/help.dart';
-import 'package:glad/home/home.dart';
-import 'package:glad/search/keyword_search.dart';
-import 'package:glad/search/search_page.dart';
-import 'package:glad/settings/settings.dart';
+import 'package:glad/forgot_password/forgot_password_page.dart';
+import 'package:glad/signup/signup_page.dart';
 import 'package:glad/splash/splash.dart';
 import 'package:go_router/go_router.dart';
 
-import 'about/about.dart';
+import 'legacy/about/about.dart';
+import 'legacy/home/home.dart';
+import 'login/login_page.dart';
 
 class Routes {
+  static String signup = "signup";
+  static String signupRoute = "/signup";
+  static String forgotPassword = "forgot_password";
+  static String forgotPasswordRoute = "/forgot_password";
+  static String login = "login";
+  static String loginRoute = "/login";
   static String base = "/";
   static String home = "home";
+  static String homeRoute = "/home";
   static String about = "about";
   static String dailyEntry = "daily_entry";
   static String settings = "settings";
@@ -21,6 +26,7 @@ class Routes {
   static String search = "search";
 }
 
+
 final GoRouter router = GoRouter(routes: <RouteBase>[
   GoRoute(
     path: Routes.base,
@@ -28,6 +34,31 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
       return const Splash();
     },
     routes: <RouteBase>[
+      GoRoute(
+        path: Routes.login,
+        builder: (BuildContext context, GoRouterState state) {
+          return LoginPage(
+            navigateToForgotPasswordView: () {
+              context.push(Routes.forgotPasswordRoute);
+            },
+            navigateToSignupView: () {
+              context.push(Routes.signupRoute);
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.signup,
+        builder: (BuildContext context, GoRouterState state) {
+          return SignupPage();
+        },
+      ),
+      GoRoute(
+        path: Routes.forgotPassword,
+        builder: (BuildContext context, GoRouterState state) {
+          return ForgotPasswordPage();
+        },
+      ),
       GoRoute(
         path: Routes.home,
         builder: (BuildContext context, GoRouterState state) {
@@ -40,40 +71,7 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
           return const AboutPage();
         },
       ),
-      GoRoute(
-        name: 'date',
-        path: Routes.dailyEntry,
-        builder: (BuildContext context, GoRouterState state) {
-          String date = state.extra as String;
-          return  DailyEntryHome(date: date);
-        },
-      ),
-      GoRoute(
-        path: Routes.search,
-        builder: (BuildContext context, GoRouterState state) {
-          return const SearchPage();
-        },
-      ),
-      GoRoute(
-        path: Routes.settings,
-        builder: (BuildContext context, GoRouterState state) {
-          return const SettingsPage();
-        },
-      ),
 
-      // Help:
-      GoRoute(
-        path: Routes.help,
-        builder: (BuildContext context, GoRouterState state) {
-          return const HelpPage();
-        },
-      ),
-      GoRoute(
-        path: Routes.keywordsSearch,
-        builder: (BuildContext context, GoRouterState state) {
-          return const KeywordSearch();
-        },
-      ),
     ],
   )
 ]);
