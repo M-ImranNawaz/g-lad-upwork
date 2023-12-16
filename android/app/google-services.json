@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066109559843",
+    "project_id": "g-lad-upwork",
+    "storage_bucket": "g-lad-upwork.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066109559843:android:d96b0dd7d867831c3e3d96",
+        "android_client_info": {
+          "package_name": "com.gladjournal.ug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbMd74-pM7Gw1eHpfKqtBPVHRwIzXWFB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

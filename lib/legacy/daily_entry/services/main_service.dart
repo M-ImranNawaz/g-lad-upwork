@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
@@ -109,7 +108,6 @@ class RecordService {
       return SearchResult(dailyRecordModel: List.from(queryResult.map((e) => DailyRecordModel.fromJson(e))),
           result: keyword);
 
-      ;
 
     } else {
       return SearchResult(dailyRecordModel: [], result: keyword);

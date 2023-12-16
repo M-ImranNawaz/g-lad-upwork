@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../legacy/daily_entry/utils/contants.dart';
@@ -10,13 +9,15 @@ class TodayPage extends StatelessWidget{
   TextEditingController etAppreciated = TextEditingController();
   TextEditingController etDelighted = TextEditingController();
 
+  TodayPage({super.key});
+
   @override
   Widget build(BuildContext context) {
 
     return  Scaffold(
       body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

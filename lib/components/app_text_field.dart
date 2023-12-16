@@ -11,6 +11,7 @@ class TextFieldWidget extends StatefulWidget {
     this.filledColor,
     this.suffixWidget,
     this.isPasswordField,
+    this.controller,
   });
 
   final IconData? iconData;
@@ -19,7 +20,7 @@ class TextFieldWidget extends StatefulWidget {
   final TextInputType? inputType;
   final bool? isPasswordField;
   final Widget? suffixWidget;
-
+  final TextEditingController? controller;
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
 }
@@ -38,6 +39,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       scrollPadding: EdgeInsets.zero,
       style: Theme.of(context)
           .textTheme

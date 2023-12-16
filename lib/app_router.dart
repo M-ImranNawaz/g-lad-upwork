@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:glad/forgot_password/forgot_password_page.dart';
 import 'package:glad/signup/signup_page.dart';
@@ -6,7 +7,6 @@ import 'package:go_router/go_router.dart';
 
 import 'home/home.dart';
 import 'legacy/about/about.dart';
-
 import 'login/login_page.dart';
 
 class Routes {
@@ -27,7 +27,6 @@ class Routes {
   static String search = "search";
 }
 
-
 final GoRouter router = GoRouter(routes: <RouteBase>[
   GoRoute(
     path: Routes.base,
@@ -38,29 +37,43 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
       GoRoute(
         path: Routes.login,
         builder: (BuildContext context, GoRouterState state) {
-          return LoginPage(
-            navigateToHomePage: (){
-              context.push(Routes.homeRoute);
-            },
-            navigateToForgotPasswordView: () {
-              context.push(Routes.forgotPasswordRoute);
-            },
-            navigateToSignupView: () {
-              context.push(Routes.signupRoute);
-            },
-          );
+          return StreamBuilder<auth.User?>(
+              stream: auth.FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.active) {
+                  if (snapshot.hasData) {
+                    return const HomePage(); // User is signed in
+                  }
+                  return LoginPage(
+                    navigateToHomePage: () {
+                      context.push(Routes.homeRoute);
+                    },
+                    navigateToForgotPasswordView: () {
+                      context.push(Routes.forgotPasswordRoute);
+                    },
+                    navigateToSignupView: () {
+                      context.push(Routes.signupRoute);
+                    },
+                  );
+                }
+                return const Scaffold(
+                  body: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ); // Waiting for auth state
+              });
         },
       ),
       GoRoute(
         path: Routes.signup,
         builder: (BuildContext context, GoRouterState state) {
-          return SignupPage();
+          return const SignupPage();
         },
       ),
       GoRoute(
         path: Routes.forgotPassword,
         builder: (BuildContext context, GoRouterState state) {
-          return ForgotPasswordPage();
+          return const ForgotPasswordPage();
         },
       ),
       GoRoute(
@@ -75,7 +88,6 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
           return const AboutPage();
         },
       ),
-
     ],
   )
 ]);

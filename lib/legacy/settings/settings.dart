@@ -5,7 +5,6 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:glad/legacy/components/app_bar.dart';
-import 'package:glad/main.dart';
 import 'package:glad/legacy/preferences/shared_preferences.dart';
 import 'package:glad/legacy/settings/settings_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -254,7 +253,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     const SizedBox(height: 20,),
                     Visibility(
                       visible:  showReminderNotificationButton,
-                        child: Text("$scheduledTimeString")
+                        child: Text(scheduledTimeString)
                     ),
                     const SizedBox(height: 12),
                     Visibility(
@@ -305,7 +304,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   fontSize:  18.5963916779,
                                   fontWeight:  FontWeight.w400,
                                   height:  1.2575,
-                                  color:  Color(0xffffffff),
+                                  color:  const Color(0xffffffff),
                                 ),),
                               ),
                             ),

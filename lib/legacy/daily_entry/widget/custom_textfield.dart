@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -20,7 +19,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: 130.w,
           child: Text(
             widget.title,
@@ -30,7 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         SizedBox(
           height: 1.h,
         ),
-        Container(
+        SizedBox(
           width: 90.w,
           child: TextField(
             minLines: 1,
@@ -58,7 +57,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
               hintText: widget.hint,
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
             ),
           ),
         )

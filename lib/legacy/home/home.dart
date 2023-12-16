@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../app_router.dart';
 import '/music_service/music_service.dart';
-import '../preferences/shared_preferences.dart';
 import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {

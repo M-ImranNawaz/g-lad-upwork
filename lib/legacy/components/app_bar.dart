@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:glad/main.dart';
 
 class GladAppBar extends StatefulWidget{
    final String titleOfPage;

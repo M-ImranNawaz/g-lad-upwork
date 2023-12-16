@@ -25,11 +25,11 @@ class _KeywordSearchState extends State<KeywordSearch> {
   final TextEditingController _searchController = TextEditingController();
 
   Color getColor(){
-    final _random = Random();
+    final random = Random();
 
 // from MIN(inclusive), to MAX(inclusive).
-    int randomBetweenIncInc(int min, int max) => min + _random.nextInt((max + 1) - min);
-    List<Color> palletColors = [Color(0xffffb8d1), Color(0xffe4b4c2), Color(0xffe7cee3), Color(0xffddfdfe)];
+    int randomBetweenIncInc(int min, int max) => min + random.nextInt((max + 1) - min);
+    List<Color> palletColors = [const Color(0xffffb8d1), const Color(0xffe4b4c2), const Color(0xffe7cee3), const Color(0xffddfdfe)];
     return palletColors[randomBetweenIncInc(0, palletColors.length - 1)];
   }
 

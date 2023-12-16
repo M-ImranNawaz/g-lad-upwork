@@ -1,13 +1,9 @@
-import 'dart:collection';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glad/legacy/components/app_bar.dart';
 import 'package:glad/legacy/daily_entry/repository/main_repository.dart';
-import 'package:glad/legacy/daily_entry/services/main_service.dart';
-import 'package:glad/music_service/music_service.dart';
 import 'package:glad/legacy/preferences/shared_preferences.dart';
 import 'package:glad/legacy/search/search_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -197,7 +193,7 @@ class _SearchPageState extends State<SearchPage> {
                                 ),
                               ),
 
-                              IconButton(onPressed: (){}, icon: Icon(Icons.chevron_right))
+                              IconButton(onPressed: (){}, icon: const Icon(Icons.chevron_right))
 
                             ],
                           ),

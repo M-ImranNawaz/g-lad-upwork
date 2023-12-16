@@ -70,6 +70,7 @@ class SearchBloc extends Bloc<SearchEvent, GetEventsForDateState> {
      };
 
 
+     // ignore: prefer_collection_literals
      events = LinkedHashMap<DateTime, List<Event>>(
      )..addAll(eventsMap );
 
