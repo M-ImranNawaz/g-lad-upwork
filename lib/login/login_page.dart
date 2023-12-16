@@ -10,8 +10,9 @@ class LoginPage extends StatelessWidget {
 
   final void Function() navigateToSignupView;
   final void Function() navigateToForgotPasswordView;
+  final void Function() navigateToHomePage;
 
-  LoginPage({super.key, required this.navigateToSignupView, required this.navigateToForgotPasswordView});
+  LoginPage({super.key, required this.navigateToSignupView, required this.navigateToForgotPasswordView, required this.navigateToHomePage});
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +104,7 @@ class LoginPage extends StatelessWidget {
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
                                       AppColors.secondaryColor)),
-                              onPressed: () {
-
-                              },
+                              onPressed: ()=> navigateToHomePage(),
                               child: const AppText(
                                 text: 'Login',
                                 color: AppColors.headingColor,

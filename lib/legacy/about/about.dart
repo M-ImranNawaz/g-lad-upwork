@@ -5,7 +5,7 @@ import 'package:flutter_text_styled/flutter_text_styled.dart';
 import 'package:glad/legacy/about/about_bloc.dart';
 import 'package:glad/legacy/about/constants.dart';
 import 'package:glad/legacy/components/app_bar.dart';
-import 'package:glad/legacy/music_service/music_service.dart';
+import 'package:glad/music_service/music_service.dart';
 import 'package:glad/legacy/preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';

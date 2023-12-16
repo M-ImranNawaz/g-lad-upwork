@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glad/legacy/components/app_bar.dart';
 import 'package:glad/legacy/daily_entry/repository/main_repository.dart';
 import 'package:glad/legacy/daily_entry/services/main_service.dart';
-import 'package:glad/legacy/music_service/music_service.dart';
+import 'package:glad/music_service/music_service.dart';
 import 'package:glad/legacy/preferences/shared_preferences.dart';
 import 'package:glad/legacy/search/search_bloc.dart';
 import 'package:go_router/go_router.dart';

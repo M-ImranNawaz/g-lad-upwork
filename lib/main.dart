@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:glad/app/GladApp.dart';
+import 'package:glad/app/glad_app.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'legacy/notification_manager/notification_manager.dart';
 import 'package:timezone/data/latest.dart' as tz;

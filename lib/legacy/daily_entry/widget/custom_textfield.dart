@@ -21,7 +21,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       children: [
         Container(
-          width: 100.w,
+          width: 130.w,
           child: Text(
             widget.title,
             style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.bold),
@@ -31,7 +31,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           height: 1.h,
         ),
         Container(
-          width: 70.w,
+          width: 90.w,
           child: TextField(
             minLines: 1,
             maxLines: 200,

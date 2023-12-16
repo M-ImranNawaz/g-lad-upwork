@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/src/streams/value_stream.dart';
-import '../music_service/music_service.dart';
+import '/music_service/music_service.dart';
 import '../preferences/shared_preferences.dart';
 
 abstract class HomeEvent {}

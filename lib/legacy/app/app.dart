@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../app_router.dart';
 import '../daily_entry/repository/main_repository.dart';
-import '../music_service/music_service.dart';
+import '/music_service/music_service.dart';
 import '../preferences/shared_preferences.dart';
 
 

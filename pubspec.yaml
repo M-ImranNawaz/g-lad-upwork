@@ -28,7 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  assets_audio_player: ^3.0.8
+  assets_audio_player: ^3.1.1
   cupertino_icons: ^1.0.2
   flutter:
       sdk: flutter
@@ -76,6 +76,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/a.mp3
+    - assets/b.mp3
+    - assets/c.mp3
     - assets/
     - assets/.env
     - assets/wheel.jpg

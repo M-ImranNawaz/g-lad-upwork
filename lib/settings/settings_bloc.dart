@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glad/music_service/music_service.dart';
 
-import '../preferences/shared_preferences.dart';
+import '../legacy/preferences/shared_preferences.dart';
+
 
 abstract class SettingsEvent {}
 class OnLoadHomeEvent extends SettingsEvent{}
@@ -32,6 +33,7 @@ class SettingBloc extends Bloc<SettingsEvent, bool> {
 
   late SharedPreferencesService _sharedPreferencesService;
   late MusicService _service;
+
   SettingBloc(MusicService service, SharedPreferencesService sharedPreferencesService) :super(false) {
     _service = service;
     _sharedPreferencesService = sharedPreferencesService;
@@ -40,28 +42,20 @@ class SettingBloc extends Bloc<SettingsEvent, bool> {
       bool autoPlayMusic = bool.parse(await _sharedPreferencesService.readValue("play_music") ?? "false");
 
       emit(autoPlayMusic);
+     // _service.openPlayer();
 
     });
 
-     on<PlayOrPauseMusicEvent>((event, emit) async{
-
-         _service.pauseOrPlayMusic();
-         String saveValue = "false";
-         if(event.data){
-           saveValue = "true";
-         }
-         await _sharedPreferencesService.saveValue("play_music", saveValue);
-         emit(event.data);
-     });
-
+    on<PlayOrPauseMusicEvent>((event, emit) async{
+      _service.pauseOrPlayMusic();
+      String saveValue = "false";
+      if(event.data){
+        saveValue = "true";
+      }
+      await _sharedPreferencesService.saveValue("play_music", saveValue);
+      emit(event.data);
+    });
 
 
-
-     // emit(event.data);
-    // on<SavePlayOrPauseMusicEvent>((event, emit) async{
-    //
-    //     add(event);
-    //
-    // });
   }
 }

@@ -4,8 +4,9 @@ import 'package:glad/signup/signup_page.dart';
 import 'package:glad/splash/splash.dart';
 import 'package:go_router/go_router.dart';
 
+import 'home/home.dart';
 import 'legacy/about/about.dart';
-import 'legacy/home/home.dart';
+
 import 'login/login_page.dart';
 
 class Routes {
@@ -38,6 +39,9 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
         path: Routes.login,
         builder: (BuildContext context, GoRouterState state) {
           return LoginPage(
+            navigateToHomePage: (){
+              context.push(Routes.homeRoute);
+            },
             navigateToForgotPasswordView: () {
               context.push(Routes.forgotPasswordRoute);
             },

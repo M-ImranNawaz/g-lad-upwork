@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:glad/legacy/music_service/music_service.dart';
+import 'package:glad/music_service/music_service.dart';
 
 import '../preferences/shared_preferences.dart';
 

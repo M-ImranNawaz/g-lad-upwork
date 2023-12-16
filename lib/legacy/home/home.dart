@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:glad/legacy/music_service/music_service.dart';
 import 'package:glad/legacy/preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../app_router.dart';
-import '../music_service/music_service.dart';
+import '/music_service/music_service.dart';
 import '../preferences/shared_preferences.dart';
 import 'home_bloc.dart';
 

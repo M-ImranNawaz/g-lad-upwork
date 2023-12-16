@@ -11,7 +11,7 @@ import 'package:glad/legacy/settings/settings_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../app/app.dart';
-import '../music_service/music_service.dart';
+import '/music_service/music_service.dart';
 import '../notification_manager/notification_manager.dart';
 
 class TimeHHmmPickerModel extends TimePickerModel {

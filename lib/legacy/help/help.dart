@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/app_bar.dart';
-import '../music_service/music_service.dart';
+import '/music_service/music_service.dart';
 import '../preferences/shared_preferences.dart';
 import 'help_bloc.dart';
 import 'image_preview.dart';
