@@ -53,8 +53,7 @@ class LoginPage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [gradientStart, gradientStart],
-                ).createShader(
-                    Rect.fromLTRB(0, -280, rect.width, rect.height - 140));
+                ).createShader(Rect.fromLTRB(0, -280, rect.width, rect.height - 140));
               },
               blendMode: BlendMode.darken,
               child: Container(
@@ -95,8 +94,7 @@ class LoginPage extends StatelessWidget {
                           elevation: 5,
                           shadowColor: Colors.blue,
                           borderRadius: const BorderRadius.horizontal(
-                              right: Radius.circular(25),
-                              left: Radius.circular(25)),
+                              right: Radius.circular(25), left: Radius.circular(25)),
                           child: SizedBox(
                             width: double.infinity,
                             child: Padding(
@@ -134,9 +132,10 @@ class LoginPage extends StatelessWidget {
                                     widthFactor: 1,
                                     child: ElevatedButton(
                                       style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.secondaryColor)),
+                                        backgroundColor: MaterialStateProperty.all(
+                                          AppColors.secondaryColor,
+                                        ),
+                                      ),
                                       onPressed: () => cubit.logIn(),
                                       child: const AppText(
                                         text: 'Login',

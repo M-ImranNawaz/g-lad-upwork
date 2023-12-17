@@ -9,6 +9,7 @@ class AppColors {
   static const secondaryColor = Color(0xFFFDA758);
   static const colorValue = 0xFFFDA758;
   static const white = Colors.white;
+  static const black = Colors.black;
 
   static const iconBtnBg = Color(0xFFE5B6CD);
   static const headingColor = Color(0xFF573353);

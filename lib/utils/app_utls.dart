@@ -22,6 +22,7 @@ class AppUtils {
   static void showLoading(BuildContext context,
       {Color color = AppColors.primaryColor, String? msg}) {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,

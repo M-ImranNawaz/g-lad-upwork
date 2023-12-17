@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:glad/calendar/calendar_page.dart';
 import 'package:glad/settings/settings.dart';
-import 'package:glad/today/today.dart';
+import 'package:glad/today/today_page.dart';
 import 'package:glad/utils/app_colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,10 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   static final List<Widget> _pages = <Widget>[
     TodayPage(),
-    const Icon(
-      Icons.camera,
-      size: 150,
-    ),
+    CalendarScreen(),
+    // const Icon(
+    //   Icons.camera,
+    //   size: 150,
+    // ),
     const Icon(
       Icons.chat,
       size: 150,
